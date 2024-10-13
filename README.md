@@ -83,141 +83,155 @@ Before you begin, ensure you have met the following requirements:
    git clone https://github.com/your-username/marathon-frontend.git
    cd marathon-frontend
 
-2 **Install Dependencies:**
+2. **Install Dependencies:**
 
-        npm install
+   ```bash
+   npm install
+   ```
 
 3. **Set Up Environment Variables:**
 
- Create a .env file in the root directory and add the following variables:
+Create a `.env` file in the root directory and add the following variables:
 
-  ```env
-      # API Configuration
-      REACT_APP_API_BASE_URL=https://your-backend-api.com/api
-      
-      # AWS Cognito Configuration
-      REACT_APP_COGNITO_USER_POOL_ID=your_cognito_user_pool_id
-      REACT_APP_COGNITO_APP_CLIENT_ID=your_cognito_app_client_id
-      REACT_APP_COGNITO_REGION=your_cognito_region
-      
-      # OpenAI Configuration
-      REACT_APP_OPENAI_API_KEY=your_openai_api_key
-      
-      # Salesforce Configuration
-      REACT_APP_SALESFORCE_API_URL=https://your-salesforce-api.com
-      Note: Replace the placeholders with your actual configuration values.
+```env
+# API Configuration
+REACT_APP_API_BASE_URL=https://your-backend-api.com/api
 
-Configuration
-AWS Cognito
-Ensure you have created a User Pool and App Client in AWS Cognito.
-Update the .env file with your Cognito User Pool ID, App Client ID, and AWS region.
-API Integration
-The frontend communicates with the backend via the REACT_APP_API_BASE_URL.
-Ensure the backend API is running and accessible.
-OpenAI Integration
-Obtain your OpenAI API key and set it in the .env file.
-Salesforce Integration
+# AWS Cognito Configuration
+REACT_APP_COGNITO_USER_POOL_ID=your_cognito_user_pool_id
+REACT_APP_COGNITO_APP_CLIENT_ID=your_cognito_app_client_id
+REACT_APP_COGNITO_REGION=your_cognito_region
+
+# OpenAI Configuration
+REACT_APP_OPENAI_API_KEY=your_openai_api_key
+
+# Salesforce Configuration
+REACT_APP_SALESFORCE_API_URL=https://your-salesforce-api.com
+```
+
+**Note:** Replace the placeholders with your actual configuration values.
+
+### Configuration
+
+#### AWS Cognito
+
+Ensure you have created a User Pool and App Client in AWS Cognito. Update the `.env` file with your Cognito User Pool ID, App Client ID, and AWS region.
+
+#### API Integration
+
+The frontend communicates with the backend via the `REACT_APP_API_BASE_URL`. Ensure the backend API is running and accessible.
+
+#### OpenAI Integration
+
+Obtain your OpenAI API key and set it in the `.env` file.
+
+#### Salesforce Integration
+
 Configure the Salesforce API endpoint and ensure proper authentication mechanisms are in place on the backend.
-Development
-Running the Development Server
+
+## Development
+
+### Running the Development Server
+
 To start the development server, run:
 
-bash
-Copy code
+```bash
 npm start
-This will launch the application in development mode. Open http://localhost:3000 to view it in your browser.
+```
 
-The page will reload if you make edits. You will also see any lint errors in the console.
+This will launch the application in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload if you make edits. You will also see any lint errors in the console.
 
-Building for Production
+### Building for Production
+
 To build the app for production, run:
 
-bash
-Copy code
+```bash
 npm run build
-This will create an optimized production build in the build/ folder. The build is minified, and the filenames include the hashes.
+```
 
-Deployment
-Deploying to AWS S3 and CloudFront
-Build the Project:
+This will create an optimized production build in the `build/` folder. The build is minified, and the filenames include the hashes.
 
-bash
-Copy code
-npm run build
-Configure AWS CLI:
+## Deployment
 
-Ensure you have the AWS CLI installed and configured with the necessary permissions.
+### Deploying to AWS S3 and CloudFront
 
-Sync Build with S3 Bucket:
+1. **Build the Project:**
 
-bash
-Copy code
-aws s3 sync build/ s3://your-s3-bucket-name --delete
-Invalidate CloudFront Cache (if applicable):
+  ```bash
+  npm run build
+  ```
 
-bash
-Copy code
-aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
-Note: Replace YOUR_DISTRIBUTION_ID with your actual CloudFront distribution ID.
+2. **Configure AWS CLI:**
+   Ensure you have the AWS CLI installed and configured with the necessary permissions.
 
-API Documentation
+3. **Sync Build with S3 Bucket:**
+
+  ```bash
+  aws s3 sync build/ s3://your-s3-bucket-name --delete
+  ```
+
+4. **Invalidate CloudFront Cache (if applicable):**
+
+  ```bash
+  aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
+  ```
+
+**Note:** Replace `YOUR_DISTRIBUTION_ID` with your actual CloudFront distribution ID.
+
+## API Documentation
+
 The frontend interacts with the backend via RESTful APIs. Below is a brief overview of the key endpoints:
 
-##Authentication
-POST /api/auth/signup: Register a new user.
-POST /api/auth/login: Authenticate a user and obtain JWT tokens.
-Sales Calls
-POST /api/calls/upload: Upload a new sales call audio file.
-GET /api/calls: Retrieve a list of sales calls.
-GET /api/calls/:id: Retrieve details of a specific sales call.
-POST /api/calls/:id/transcribe: Initiate transcription for a sales call.
-POST /api/calls/:id/sync: Sync transcription and next steps to Salesforce.
-Knowledge Base
-POST /api/knowledge/search: Search the knowledge base with a query.
+### Authentication
+
+- `POST /api/auth/signup`: Register a new user.
+- `POST /api/auth/login`: Authenticate a user and obtain JWT tokens.
+
+### Sales Calls
+
+- `POST /api/calls/upload`: Upload a new sales call audio file.
+- `GET /api/calls`: Retrieve a list of sales calls.
+- `GET /api/calls/:id`: Retrieve details of a specific sales call.
+- `POST /api/calls/:id/transcribe`: Initiate transcription for a sales call.
+- `POST /api/calls/:id/sync`: Sync transcription and next steps to Salesforce.
+
+### Knowledge Base
+
+- `POST /api/knowledge/search`: Search the knowledge base with a query.
+
 For detailed API documentation, refer to the backend repository's API Documentation.
 
-Contributing
+## Contributing
+
 Contributions are welcome! Please follow these steps to contribute:
 
-Fork the Repository
+1. **Fork the Repository**
 
-Create a Feature Branch:
+2. **Create a Feature Branch:**
 
-bash
-Copy code
-git checkout -b feature/YourFeatureName
-Commit Your Changes:
+  ```bash
+  git checkout -b feature/YourFeatureName
+  ```
 
-bash
-Copy code
-git commit -m "Add some feature"
-Push to the Branch:
+3. **Commit Your Changes:**
 
-bash
-Copy code
-git push origin feature/YourFeatureName
-Open a Pull Request
+  ```bash
+  git commit -m "Add some feature"
+  ```
 
-Describe your changes and submit the pull request for review.
+4. **Push to the Branch:**
 
-License
+  ```bash
+  git push origin feature/YourFeatureName
+  ```
+
+5. **Open a Pull Request**
+   Describe your changes and submit the pull request for review.
+
+## License
+
 This project is licensed under the MIT License.
 
-Contact
-For any questions or support, please contact your-email@example.com.
+## Contact
 
-markdown
-Copy code
-
----
-
-**Notes:**
-
-- **Placeholders:** Ensure you replace placeholders like `your-username`, `your-email@example.com`, `your_cognito_user_pool_id`, etc., with your actual information.
-- **File Structure:**
-  - Make sure to add the `.env` file to your `.gitignore` to prevent sensitive information from being exposed.
-  - Ensure that the `./screenshots/` directory contains the images referenced in the README.
-- **API Documentation Link:** Update the [API Documentation](https://github.com/your-username/marathon-backend#api-documentation) link to point to your actual backend repository if it's different.
-- **Environment Variables:** Keep your `.env` file secure and do not commit it to version control.
-
-Feel free to further customize this README to better fit your project's needs!
+For any questions or support, please contact `dbabs297@gmail.com`.
