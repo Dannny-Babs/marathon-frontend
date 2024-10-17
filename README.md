@@ -157,24 +157,24 @@ This will create an optimized production build in the `build/` folder. The build
 
 1. **Build the Project:**
 
-  ```bash
-  npm run build
-  ```
+    ```bash
+    npm run build
+    ```
 
 2. **Configure AWS CLI:**
    Ensure you have the AWS CLI installed and configured with the necessary permissions.
 
 3. **Sync Build with S3 Bucket:**
 
-  ```bash
-  aws s3 sync build/ s3://your-s3-bucket-name --delete
-  ```
+    ```bash
+    aws s3 sync build/ s3://your-s3-bucket-name --delete
+    ```
 
 4. **Invalidate CloudFront Cache (if applicable):**
 
-  ```bash
-  aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
-  ```
+    ```bash
+    aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
+    ```
 
 **Note:** Replace `YOUR_DISTRIBUTION_ID` with your actual CloudFront distribution ID.
 
@@ -209,21 +209,21 @@ Contributions are welcome! Please follow these steps to contribute:
 
 2. **Create a Feature Branch:**
 
-  ```bash
-  git checkout -b feature/YourFeatureName
-  ```
+    ```bash
+    git checkout -b feature/YourFeatureName
+    ```
 
 3. **Commit Your Changes:**
 
-  ```bash
-  git commit -m "Add some feature"
-  ```
+    ```bash
+    git commit -m "Add some feature"
+    ```
 
 4. **Push to the Branch:**
 
-  ```bash
-  git push origin feature/YourFeatureName
-  ```
+    ```bash
+    git push origin feature/YourFeatureName
+    ```
 
 5. **Open a Pull Request**
    Describe your changes and submit the pull request for review.
