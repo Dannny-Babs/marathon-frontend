@@ -138,10 +138,12 @@ function Login() {
                                     )}
                                 />
                                 <FormField control={form.control} name="password" render={({ field }) => (
-                                    <FormControl>
-                                        <PasswordInput {...field} className='shadow-none ' />
-                                    </FormControl>
-                                    
+                                    <FormItem>
+                                        <FormControl>
+                                            <PasswordInput {...field} className='shadow-none ' />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
                                 )}
                                 />
                             </div>
