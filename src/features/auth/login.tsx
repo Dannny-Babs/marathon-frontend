@@ -6,7 +6,6 @@ import { useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/toaster"
 import authLogin from "/images/auth-login.png"
-
 import {
     Form,
     FormControl, FormField,
@@ -16,11 +15,12 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { PasswordInput } from '@/components/ui/passwordinput';
+import { Checkbox } from "@/components/ui/checkbox"
+
 
 
 const formSchema = z.object({
-    firstname: z.string(),
-    lastname: z.string(),
+
     email: z.string().email({
         message: "Invalid email address.",
     }),
@@ -29,6 +29,7 @@ const formSchema = z.object({
         .max(100, { message: "Password must be at most 100 characters." }).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/, {
             message: "Password must contain at least one uppercase letter, one lowercase letter, and one number.",
         }),
+    remember: z.boolean().default(false).optional(),
 
 })
 
@@ -38,10 +39,9 @@ function Login() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            firstname: "",
-            lastname: "",
             email: "",
             password: "",
+            remember: false,
         },
     })
 
@@ -77,46 +77,15 @@ function Login() {
                         <h1 className="text-xl tracking-tight font-medium ml-2 text-gray-900">Marathon</h1>
                     </div>
                     <Form {...form}  >
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:w-11/12 mt-8  items-center self-center sm:px-8 lg:px-32 justify-center m-auto">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 md:w-11/12 mt-8 md:mt-24  items-center self-center sm:px-8 lg:px-32 justify-center m-auto">
                             <div className='text-center'>
                                 <h2 className=' font-bold text-2xl text-text-dark '>
-                                    Welcome to Marathon
+                                    Welcome Back to Marathon
                                 </h2>
-                                <p className="text-muted-foreground text-normal">
-                                    Create an account to continue
+                                <p className="text-muted-foreground text-normal">Login to Your Account to continue your sales journey.
                                 </p>
                             </div>
                             <div>
-                                <FormField
-                                    control={form.control}
-                                    name="firstname"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className='text-xs font-semibold text-gray-800 '>First Name</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="John " {...field} className='shadow-none ' />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-
-
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="lastname"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className='text-xs font-semibold text-gray-800 '>Last Name</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="Doe" {...field} className='shadow-none ' />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-
-
-                                    )}
-                                />
                                 <FormField
                                     control={form.control}
                                     name="email"
@@ -146,41 +115,59 @@ function Login() {
                                     </FormItem>
                                 )}
                                 />
+                                <div className="flex items-center justify-between my-4">
+                                    <FormField
+                                        control={form.control}
+                                        name="remember"
+                                        render={({ field }) => (
+                                            <FormItem className="flex flex-row items-center space-x-2 space-y-0 ">
+                                                <FormControl>
+                                                    <Checkbox
+                                                        checked={field.value}
+                                                        onCheckedChange={field.onChange}
+                                                    />
+                                                </FormControl>
+                                                <div className="space-y-1 leading-none">
+                                                    <FormLabel className='text-xs '>
+                                                        Remember Me
+                                                    </FormLabel>
+
+                                                </div>
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <a href="#" className="text-xs  font-medium text-primaryBlue-800 hover:underline">Forgot password?</a>
+                                </div>
                             </div>
 
-                            <Button type="submit" className="shadow-none bg-text-dark font-normal py-5 w-full">
-                                Create Account
-                            </Button>
-                            <div className="relative my-4">
-                                <div className="absolute inset-0 flex items-center">
-                                    <span className="w-full border-t" />
+
+                            <div className='space-y-3'>
+                                <Button type="submit" className="shadow-none bg-text-dark font-normal py-5 w-full">
+                                    Continue
+                                </Button>
+                                <div className="relative my-4">
+                                    <div className="absolute inset-0 flex items-center">
+                                        <span className="w-full border-t" />
+                                    </div>
+                                    <div className="relative flex justify-center text-xs uppercase">
+                                        <span className="bg-background px-2 text-muted-foreground">
+                                            Or continue with
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="relative flex justify-center text-xs uppercase">
-                                    <span className="bg-background px-2 text-muted-foreground">
-                                        Or continue with
-                                    </span>
-                                </div>
+                                <Button className="shadow-none bg-text-light text-text-dark border border-gray-200 hover:bg-primaryBlue-300  py-5 font-medium w-full">
+                                    Sign in with Google
+                                </Button>
                             </div>
-                            <Button className="shadow-none bg-text-light text-text-dark border border-gray-200 hover:bg-primaryBlue-300  py-5 font-medium w-full">
-                                Sign in with Google
-                            </Button>
-                            <p className="px-8 text-center text-xs text-muted-foreground">
-                                By clicking continue, you agree to our{" "}
-                                <a
-                                    href="/terms"
-                                    className="underline underline-offset-4 hover:text-primary"
-                                >
-                                    Terms of Service
-                                </a>{" "}
-                                and{" "}
-                                <a
-                                    href="/privacy"
-                                    className="underline underline-offset-4 hover:text-primary"
-                                >
-                                    Privacy Policy
-                                </a>
-                                .
-                            </p>
+
+                            <div className="text-center text-xs mt-4">
+                                <p className="text-muted-foreground font-medium">
+                                    Already have an account?
+                                    <a href="#" className="text-primaryBlue-800 hover:underline"> Sign in</a>
+                                </p>
+                            </div>
+
                         </form>
                     </Form>
                 </div>
@@ -204,6 +191,9 @@ function Login() {
 }
 
 export default Login
+
+
+
 
 
 
