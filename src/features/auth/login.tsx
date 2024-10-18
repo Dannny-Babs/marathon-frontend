@@ -137,7 +137,13 @@ function Login() {
 
                                     )}
                                 />
-                                <PasswordInput {...form.register("password")}  className='shadow-none ' />
+                                <FormField control={form.control} name="password" render={({ field }) => (
+                                    <FormControl>
+                                        <PasswordInput {...field} className='shadow-none ' />
+                                    </FormControl>
+                                    
+                                )}
+                                />
                             </div>
 
                             <Button type="submit" className="shadow-none bg-text-dark font-normal py-5 w-full">
