@@ -1,9 +1,10 @@
 import * as React from "react"
 import { SidebarBrand } from "@/features/dashboard/components/sidebar-brand"
-import { Settings2, PuzzleIcon, Home, MessageSquareTextIcon, BookTextIcon,Headset } from "lucide-react"
+import { Settings2, PuzzleIcon, Home, MessageSquareTextIcon, BookTextIcon, Headset } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -13,79 +14,86 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { NavUser } from "./nav-user"
+import { Link, useLocation } from "react-router-dom"
 
 // This is sample data.
 const data = {
-  versions: ["1.0.1"],
   navMain: [
-
     {
       title: "Main",
-      url: "#",
       items: [
         {
           title: "Overview",
-          url: "#",
+          url: "/dashboard",
           icon: Home,
-          isActive: true,
         },
         {
           title: "Calls",
-          url: "#",
+          url: "/dashboard/calls",
           icon: MessageSquareTextIcon,
         },
         {
           title: "Knowledge Base",
-          url: "#",
+          url: "/dashboard/knowledge-base",
           icon: BookTextIcon,
         },
-       
       ],
     },
     {
       title: "Settings",
-      url: "#",
       items: [
         {
           title: "Integrations",
-          url: "#",
+          url: "/dashboard/integrations",
           icon: PuzzleIcon,
         },
         {
           title: "Settings",
-          url: "#",
+          url: "/dashboard/settings",
           icon: Settings2,
         },
         {
           title: "Support",
-          url: "#",
+          url: "/dashboard/support",
           icon: Headset,
         },
       ],
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const location = useLocation();
+
+  const isActive = (url: string) => {
+    if (url === '/dashboard') {
+      return location.pathname === url;
+    }
+    return location.pathname.startsWith(url);
+  };
+
   return (
     <Sidebar {...props} className="bg-gray-800 font-Instrument">
       <SidebarHeader>
-        <SidebarBrand/>
+        <SidebarBrand />
       </SidebarHeader>
       <SidebarContent>
-        {/* We create a SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
+        {data.navMain.map((group) => (
+          <SidebarGroup key={group.title}>
+            <SidebarGroupLabel>{group.title}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {item.items.map((item) => (
+                {group.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={item.isActive} className="py-5 " >
-                    <a href={item.url}>
-                      {item.icon && <item.icon />}
-                      <span>{item.title}</span>
-                    </a>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isActive(item.url)}
+                    >
+                      <Link to={item.url}>
+                        {item.icon && <item.icon className="mr-2 h-4 w-4" />}
+                        <span>{item.title}</span>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
@@ -94,6 +102,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroup>
         ))}
       </SidebarContent>
+      <SidebarFooter className="md:hidden block items-center py-4">
+        <NavUser user={{
+          name: "Olivia Dunham",
+          email: "olivia@lee.com",
+          avatar: "https://github.com/shadcn.png"
+        }} />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )

@@ -1,7 +1,7 @@
 // Desc: Login component for the authentication page
 import { Toaster } from "@/components/ui/toaster"
 import authLogin from "/images/auth-login.png"
-import LoginForm from "./components/loginForm"
+import LoginForm from "./components/login-form"
 
 
 
