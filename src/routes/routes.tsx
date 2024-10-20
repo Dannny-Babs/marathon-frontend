@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from '../features/auth/login';
 import Register from '@/features/auth/register';
+import ForgotPassword from '@/features/auth/forgotPassword';
 /*import Access from '../features/access/Access';
 import Registration from '../features/auth/Registration';
 
@@ -14,6 +15,7 @@ const AppRoutes = () => (
    <Routes>
       <Route path="/" element={<Login />} />
       <Route path='/register' element={<Register />} />
+      <Route path='/forgot-password' element={<ForgotPassword />} />
       {/*  <Route path="/register" element={<Registration />} />
       <Route path="/login" element={<Login />} />
       <Route path="/onboarding" element={<Onboarding />} />

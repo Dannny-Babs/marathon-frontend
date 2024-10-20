@@ -31,6 +31,7 @@ function Register() {
                         alt="image of marathon widgets"
                         className='mt-16 w-full' />
                 </div>
+                 
             </div>
         </>
     )
