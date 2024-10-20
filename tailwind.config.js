@@ -1,6 +1,3 @@
-import { text } from 'stream/consumers';
-
-
 /** @type {import('tailwindcss').Config} */
 export default {
 	darkMode: ["class"],
@@ -20,7 +17,7 @@ export default {
 				Instrument: ["Plus Jakarta Sans", "sans-serif"]
 			},
 			backgroundImage: {
-				"auth-bg": "url('/src/assets/images/auth-bg.png')",
+				'auth-bg': 'url(/src/assets/images/auth-bg.png)'
 			},
 			colors: {
 				background: 'hsl(var(--background))',
@@ -64,42 +61,55 @@ export default {
 					'5': 'hsl(var(--chart-5))'
 				},
 				gray: {
-					100: 'hsl(var(--Gray-100))',
-					200: 'hsl(var(--Gray-200))',
-					300: 'hsl(var(--Gray-300))',
-					400: 'hsl(var(--Gray-400))',
-					500: 'hsl(var(--Gray-500))',
-					600: 'hsl(var(--Gray-600))',
-					700: 'hsl(var(--Gray-700))',
-					800: 'hsl(var(--Gray-800))',
-					900: 'hsl(var(--Gray-900))'
+					'100': 'hsl(var(--Gray-100))',
+					'200': 'hsl(var(--Gray-200))',
+					'300': 'hsl(var(--Gray-300))',
+					'400': 'hsl(var(--Gray-400))',
+					'500': 'hsl(var(--Gray-500))',
+					'600': 'hsl(var(--Gray-600))',
+					'700': 'hsl(var(--Gray-700))',
+					'800': 'hsl(var(--Gray-800))',
+					'900': 'hsl(var(--Gray-900))'
 				},
 				primaryBlue: {
-					100: 'hsl(var(--Blue-100))',
-					200: 'hsl(var(--Blue-200))',
-					300: 'hsl(var(--Blue-300))',
-					400: 'hsl(var(--Blue-400))',
-					500: 'hsl(var(--Blue-500))',
-					600: 'hsl(var(--Blue-600))',
-					700: 'hsl(var(--Blue-700))',
-					800: 'hsl(var(--Blue-800))',
-					900: 'hsl(var(--Blue-900))'
-
+					'100': 'hsl(var(--Blue-100))',
+					'200': 'hsl(var(--Blue-200))',
+					'300': 'hsl(var(--Blue-300))',
+					'400': 'hsl(var(--Blue-400))',
+					'500': 'hsl(var(--Blue-500))',
+					'600': 'hsl(var(--Blue-600))',
+					'700': 'hsl(var(--Blue-700))',
+					'800': 'hsl(var(--Blue-800))',
+					'900': 'hsl(var(--Blue-900))'
 				},
 				text: {
 					dark: 'hsl(var(--textDark))',
 					light: 'hsl(var(--textLight))'
+				},
+				sidebar: {
+					DEFAULT: 'hsl(var(--sidebar-background))',
+					foreground: 'hsl(var(--sidebar-foreground))',
+					primary: 'hsl(var(--sidebar-primary))',
+					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+					accent: 'hsl(var(--sidebar-accent))',
+					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+					border: 'hsl(var(--sidebar-border))',
+					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
 			keyframes: {
-				"caret-blink": {
-					"0%,70%,100%": { opacity: "1" },
-					"20%,50%": { opacity: "0" },
-				},
+				'caret-blink': {
+					'0%,70%,100%': {
+						opacity: '1'
+					},
+					'20%,50%': {
+						opacity: '0'
+					}
+				}
 			},
 			animation: {
-				"caret-blink": "caret-blink 1.25s ease-out infinite",
-			},
+				'caret-blink': 'caret-blink 1.25s ease-out infinite'
+			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
