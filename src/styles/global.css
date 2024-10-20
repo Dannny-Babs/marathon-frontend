@@ -1,5 +1,5 @@
 /* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -30,7 +30,30 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
+    --textDark: 231 85% 17%;
+    --textLight: 210 20% 98%;
+    --Gray-900: 210 10% 15%;
+    --Gray-800: 210 15% 22%;
+    --Gray-700: 210 25% 27%;
+    --Gray-600: 210 30% 34%;
+    --Gray-500: 210 25% 43%;
+    --Gray-400: 210 20% 52%;
+    --Gray-300: 210 15% 60%;
+    --Gray-200: 210 10% 92%;
+    --Gray-100: 210 10% 96%;
+    --Gray-50: 210 20% 98%;
+    --Blue-900: 217 90% 30%;
+    --Blue-800: 217 90% 40%;
+    --Blue-700: 217 75% 46%;
+    --Blue-600: 217 85% 53%;
+    --Blue-500: 217 90% 60%;
+    --Blue-400: 217 100% 70%;
+    --Blue-300: 217 100% 80%;
+    --Blue-200: 217 100% 90%;
+    --Blue-100: 217 100% 95%;
+    --Blue-50: 217 100% 97%;
+
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -56,7 +79,8 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
+
   }
 }
 @layer base {
