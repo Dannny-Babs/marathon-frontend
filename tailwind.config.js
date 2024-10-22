@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /** @type {import('tailwindcss').Config} */
 export default {
 	darkMode: ["class"],
@@ -105,12 +106,7 @@ export default {
 					'20%,50%': {
 						opacity: '0'
 					}
-				}
-			},
-			animation: {
-				'caret-blink': 'caret-blink 1.25s ease-out infinite'
-			},
-			keyframes: {
+				},
 				hide: {
 					from: { opacity: "1" },
 					to: { opacity: "0" },
@@ -162,6 +158,9 @@ export default {
 				},
 			},
 			animation: {
+				animation: {
+					'caret-blink': 'caret-blink 1.25s ease-out infinite'
+				},
 				hide: "hide 150ms cubic-bezier(0.16, 1, 0.3, 1)",
 				slideDownAndFade:
 					"slideDownAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
