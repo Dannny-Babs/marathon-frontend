@@ -1,3 +1,4 @@
+import React from 'react';
 import AiSearch from './components/ai-search';
 import { Component } from './components/horizontal-charts';
 import { UpcomingMeetings } from './components/schedule-list';
