@@ -14,6 +14,7 @@ export function UpcomingMeetings() {
             name: "Post-Demo Feedback",
             link: "https://www.google.com",
             company: "St. Mary's Hospital",
+            
         },
         {
             day: "Mon, 12 Jul",

@@ -1,4 +1,3 @@
-"use client"
 
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
@@ -90,21 +89,20 @@ export default function TaskSummary() {
   const getPriorityColor = (priority: Task["priority"]) => {
     switch (priority) {
       case "High":
-        return "-red-600"
+        return "text-red-600 bg-red-600"
       case "Medium":
-        return "-yellow-600"
+        return "text-yellow-600 bg-yellow-600"
       case "Low":
-        return "-green-600"
+        return "text-green-600 bg-green-600"
       default:
-        return "-gray-500"
+        return "text-gray-600 bg-gray-600"
     }
   }
 
   return (
-    <Card className="w-full max-w-4xl  border rounded-xl py-0 ">
-      <CardHeader className="flex flex-row  items-center justify-between">
-        <CardTitle className="text-sm  text-gray-700">Task Summary</CardTitle>
-    
+    <Card className="w-full max-w-4xl border rounded-xl py-0">
+      <CardHeader className="flex flex-row items-center justify-between">
+        <CardTitle className="text-sm text-gray-700">Task Summary</CardTitle>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -131,32 +129,46 @@ export default function TaskSummary() {
           <TableHeader>
             <TableRow>
               <TableHead className="w-4 px-2 text-xs">Status</TableHead>
-              <TableHead className=" text-xs">Description</TableHead>
+              <TableHead className="text-xs">Description</TableHead>
               <TableHead className="hidden md:table-cell text-xs">Due Date</TableHead>
               <TableHead className="hidden sm:table-cell text-xs px-2">Priority</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {tasks.map((task) => (
-              <TableRow key={task.id} className="">
-                <TableCell className="px-2">
-                  <Checkbox
-                    checked={task.status === "Completed"}
-                    onCheckedChange={() => handleTaskCompletion(task.id)}
-                  />
-                </TableCell>
-                <TableCell className="font-medium text-sm">
-                  {task.description}
-                  <div className="md:hidden text-xs text-muted-foreground">{task.dueDate}</div>
-                </TableCell>
-                <TableCell className="hidden md:table-cell text-xs">{task.dueDate}</TableCell>
-                <TableCell className="hidden sm:table-cell sm:px-1">
-                  <Badge className={`bg-opacity-20 bg${getPriorityColor(task.priority)}  text${getPriorityColor(task.priority)} text-xs font-medium`}>
-                    {task.priority}
-                  </Badge>
-                </TableCell>
-              </TableRow>
-            ))}
+            {tasks.map((task) => {
+              const isCompleted = task.status === "Completed"
+              return (
+                <TableRow
+                  key={task.id}
+                  className={`transition-colors duration-200 ${
+                    isCompleted ? "bg-gray-100" : "bg-white"
+                  }`}
+                >
+                  <TableCell className="px-2">
+                    <Checkbox
+                      checked={isCompleted}
+                      onCheckedChange={() => handleTaskCompletion(task.id)}
+                    />
+                  </TableCell>
+                  <TableCell
+                    className={`font-medium text-sm ${
+                      isCompleted ? "line-through text-gray-400" : "text-text-dark"
+                    }`}
+                  >
+                    {task.description}
+                    <div className="md:hidden text-xs text-muted-foreground">{task.dueDate}</div>
+                  </TableCell>
+                  <TableCell className="hidden md:table-cell text-xs">{task.dueDate}</TableCell>
+                  <TableCell className="hidden sm:table-cell sm:px-1">
+                    <Badge
+                      className={`text-xs ${getPriorityColor(task.priority)} bg-opacity-20`}
+                    >
+                      {task.priority}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              )
+            })}
           </TableBody>
         </Table>
       </CardContent>
