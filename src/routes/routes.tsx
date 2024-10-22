@@ -1,28 +1,47 @@
-// src/routes/Routes.js
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// src/routes/Routes.tsx
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from '../features/auth/login';
 import Register from '@/features/auth/register';
 import ForgotPassword from '@/features/auth/forgotPassword';
-/*import Access from '../features/access/Access';
-import Registration from '../features/auth/Registration';
+import Dashboard from '@/features/dashboard/page';
+import ErrorPage from '@/components/layout/404-page';
+// import Access from '../features/access/Access';
+// import Registration from '../features/auth/Registration';
+// import Onboarding from '../features/onboarding/Onboarding';
+// import NotFound from '../components/NotFound/NotFound';
 
-import Onboarding from '../features/onboarding/Onboarding';
-import Dashboard from '../features/dashboard/Dashboard';
-import NotFound from '../components/NotFound/NotFound';*/
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
 
-const AppRoutes = () => (
-  <Router>
-   <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path='/register' element={<Register />} />
-      <Route path='/forgot-password' element={<ForgotPassword />} />
-      {/*  <Route path="/register" element={<Registration />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/onboarding" element={<Onboarding />} />
-      <Route path="/dashboard/*" element={<Dashboard />} />
-      <Route path="*" element={<NotFound />} />*/}
-    </Routes> 
-  </Router>
-);
+  },
+  {
+    path: "/dashboard/*",
+    element: <Dashboard />,
 
-export default AppRoutes;
+  },
+
+
+  //   path: "/onboarding",
+  //   element: <Onboarding />,
+  // },
+  {
+    path: "*",
+    element: <ErrorPage />,
+  },
+]);
+
+export default function AppRoutes(): JSX.Element {
+  return <RouterProvider router={router} />;
+}
+

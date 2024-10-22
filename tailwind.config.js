@@ -1,6 +1,3 @@
-import { text } from 'stream/consumers';
-
-
 /** @type {import('tailwindcss').Config} */
 export default {
 	darkMode: ["class"],
@@ -20,7 +17,7 @@ export default {
 				Instrument: ["Plus Jakarta Sans", "sans-serif"]
 			},
 			backgroundImage: {
-				"auth-bg": "url('/src/assets/images/auth-bg.png')",
+				'auth-bg': 'url(/src/assets/images/auth-bg.png)'
 			},
 			colors: {
 				background: 'hsl(var(--background))',
@@ -64,42 +61,130 @@ export default {
 					'5': 'hsl(var(--chart-5))'
 				},
 				gray: {
-					100: 'hsl(var(--Gray-100))',
-					200: 'hsl(var(--Gray-200))',
-					300: 'hsl(var(--Gray-300))',
-					400: 'hsl(var(--Gray-400))',
-					500: 'hsl(var(--Gray-500))',
-					600: 'hsl(var(--Gray-600))',
-					700: 'hsl(var(--Gray-700))',
-					800: 'hsl(var(--Gray-800))',
-					900: 'hsl(var(--Gray-900))'
+					'100': 'hsl(var(--Gray-100))',
+					'200': 'hsl(var(--Gray-200))',
+					'300': 'hsl(var(--Gray-300))',
+					'400': 'hsl(var(--Gray-400))',
+					'500': 'hsl(var(--Gray-500))',
+					'600': 'hsl(var(--Gray-600))',
+					'700': 'hsl(var(--Gray-700))',
+					'800': 'hsl(var(--Gray-800))',
+					'900': 'hsl(var(--Gray-900))'
 				},
 				primaryBlue: {
-					100: 'hsl(var(--Blue-100))',
-					200: 'hsl(var(--Blue-200))',
-					300: 'hsl(var(--Blue-300))',
-					400: 'hsl(var(--Blue-400))',
-					500: 'hsl(var(--Blue-500))',
-					600: 'hsl(var(--Blue-600))',
-					700: 'hsl(var(--Blue-700))',
-					800: 'hsl(var(--Blue-800))',
-					900: 'hsl(var(--Blue-900))'
-
+					'100': 'hsl(var(--Blue-100))',
+					'200': 'hsl(var(--Blue-200))',
+					'300': 'hsl(var(--Blue-300))',
+					'400': 'hsl(var(--Blue-400))',
+					'500': 'hsl(var(--Blue-500))',
+					'600': 'hsl(var(--Blue-600))',
+					'700': 'hsl(var(--Blue-700))',
+					'800': 'hsl(var(--Blue-800))',
+					'900': 'hsl(var(--Blue-900))'
 				},
 				text: {
 					dark: 'hsl(var(--textDark))',
 					light: 'hsl(var(--textLight))'
+				},
+				sidebar: {
+					DEFAULT: 'hsl(var(--sidebar-background))',
+					foreground: 'hsl(var(--sidebar-foreground))',
+					primary: 'hsl(var(--sidebar-primary))',
+					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+					accent: 'hsl(var(--sidebar-accent))',
+					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+					border: 'hsl(var(--sidebar-border))',
+					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
 			keyframes: {
-				"caret-blink": {
-					"0%,70%,100%": { opacity: "1" },
-					"20%,50%": { opacity: "0" },
+				'caret-blink': {
+					'0%,70%,100%': {
+						opacity: '1'
+					},
+					'20%,50%': {
+						opacity: '0'
+					}
+				}
+			},
+			animation: {
+				'caret-blink': 'caret-blink 1.25s ease-out infinite'
+			},
+			keyframes: {
+				hide: {
+					from: { opacity: "1" },
+					to: { opacity: "0" },
+				},
+				slideDownAndFade: {
+					from: { opacity: "0", transform: "translateY(-6px)" },
+					to: { opacity: "1", transform: "translateY(0)" },
+				},
+				slideLeftAndFade: {
+					from: { opacity: "0", transform: "translateX(6px)" },
+					to: { opacity: "1", transform: "translateX(0)" },
+				},
+				slideUpAndFade: {
+					from: { opacity: "0", transform: "translateY(6px)" },
+					to: { opacity: "1", transform: "translateY(0)" },
+				},
+				slideRightAndFade: {
+					from: { opacity: "0", transform: "translateX(-6px)" },
+					to: { opacity: "1", transform: "translateX(0)" },
+				},
+				accordionOpen: {
+					from: { height: "0px" },
+					to: { height: "var(--radix-accordion-content-height)" },
+				},
+				accordionClose: {
+					from: {
+						height: "var(--radix-accordion-content-height)",
+					},
+					to: { height: "0px" },
+				},
+				dialogOverlayShow: {
+					from: { opacity: "0" },
+					to: { opacity: "1" },
+				},
+				dialogContentShow: {
+					from: {
+						opacity: "0",
+						transform: "translate(-50%, -45%) scale(0.95)",
+					},
+					to: { opacity: "1", transform: "translate(-50%, -50%) scale(1)" },
+				},
+				drawerSlideLeftAndFade: {
+					from: { opacity: "0", transform: "translateX(100%)" },
+					to: { opacity: "1", transform: "translateX(0)" },
+				},
+				drawerSlideRightAndFade: {
+					from: { opacity: "1", transform: "translateX(0)" },
+					to: { opacity: "0", transform: "translateX(100%)" },
 				},
 			},
 			animation: {
-				"caret-blink": "caret-blink 1.25s ease-out infinite",
+				hide: "hide 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+				slideDownAndFade:
+					"slideDownAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+				slideLeftAndFade:
+					"slideLeftAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+				slideUpAndFade: "slideUpAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+				slideRightAndFade:
+					"slideRightAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+				// Accordion
+				accordionOpen: "accordionOpen 150ms cubic-bezier(0.87, 0, 0.13, 1)",
+				accordionClose: "accordionClose 150ms cubic-bezier(0.87, 0, 0.13, 1)",
+				// Dialog
+				dialogOverlayShow:
+					"dialogOverlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+				dialogContentShow:
+					"dialogContentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+				// Drawer
+				drawerSlideLeftAndFade:
+					"drawerSlideLeftAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+				drawerSlideRightAndFade: "drawerSlideRightAndFade 150ms ease-in",
 			},
+
+
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

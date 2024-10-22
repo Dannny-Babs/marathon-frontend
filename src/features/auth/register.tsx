@@ -1,5 +1,5 @@
 import authLogin from "/images/auth-login.png"
-import RegisterForm from './components/registerform';
+import RegisterForm from './components/register-form';
 
 function Register() {
 
