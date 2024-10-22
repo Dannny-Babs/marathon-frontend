@@ -1,12 +1,13 @@
 import globe from '/images/globe.png';
+import React from 'react';
 
 export default function AiSearch() {
     const recentSearches = [
-        "How to handle a difficult customer?",        
-        "Onboarding a new client?",
-        "Cold email tips?",
+        "How to handle a difficult customer?",
+
+        "Cold email tips?", "New client tips?",
         "Best practices for follow-up emails?",
-        "New client tips?",
+
         "Handle doubting customers?",
 
     ];

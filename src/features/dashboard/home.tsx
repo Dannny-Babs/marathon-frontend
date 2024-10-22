@@ -24,9 +24,9 @@ export default function Home() {
 
             {/* Main Content*/}
             <div className="flex flex-1 flex-col gap-4 md:p-2 ">
-                <div className="grid gap-4 md:grid-cols-3">
+                <div className="grid gap-4 md:grid-cols-2">
                     {/* Ai Search Component*/}
-                    <div className="flex flex-col md:col-span-2 gap-2.5">
+                    <div className="flex flex-col  gap-2.5">
                         <AiSearch />
                     </div>
                     {/* Sales Snapshot Charts */}
